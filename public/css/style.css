@@ -334,15 +334,15 @@ body {
 
 .ranking-entry {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 0.8rem 0.8rem;
+  padding: 0.8rem 1rem;
   margin-bottom: 4px;
   background: #1a1a2e;
   border: 3px solid #333;
   border-radius: 2px;
-  font-size: 0.55rem;
+  font-size: 0.65rem;
   transition: transform 0.1s;
-  gap: 0.6rem;
 }
 
 .ranking-entry.current-player {
@@ -352,8 +352,7 @@ body {
 
 .ranking-entry .rank {
   color: #aaa;
-  min-width: 2.5rem;
-  flex-shrink: 0;
+  min-width: 3rem;
 }
 
 .ranking-entry.top-1 { border-color: #ffd700; }
@@ -367,18 +366,12 @@ body {
 .ranking-entry .player-name {
   flex: 1;
   color: #fff;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .ranking-entry .player-score {
   color: #ffd700;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   text-shadow: 1px 1px 0 #b8860b;
-  flex-shrink: 0;
-  min-width: 2rem;
-  text-align: right;
 }
 
 .ranking-buttons {

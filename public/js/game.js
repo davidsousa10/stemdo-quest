@@ -282,7 +282,7 @@ class Game {
     const minGap = this.player.height * 1.2;
     const gap = Math.max(minGap, this.PIPE_GAP * Math.pow(0.95, this.score));
     const minTop = 40;
-    const maxTop = this.groundY - gap - 40;
+    const maxTop = Math.max(minTop + 10, this.groundY - gap - 40);
     const topHeight = minTop + Math.random() * (maxTop - minTop);
 
     this.pipes.push({
