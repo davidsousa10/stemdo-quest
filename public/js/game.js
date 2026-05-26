@@ -63,7 +63,7 @@ class Game {
     this.PIPE_GAP = Math.max(280, Math.min(380, this.height * 0.45));
 
     // Scale player and pipes to screen size
-    const scale = Math.min(this.width / 800, this.height / 600);
+    const scale = Math.min(this.width / 1200, this.height / 900);
     this.player.width = 200 * scale;
     this.player.height = 170 * scale;
     this.PIPE_WIDTH = 120 * scale;
