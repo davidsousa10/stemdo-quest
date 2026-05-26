@@ -112,7 +112,11 @@ class Game {
   beginPlay() {
     if (this.started) return;
     this.started = true;
-    this.pipeTimer = 0;
+    // Account for pre-spawned pipes: last one is near the right edge,
+    // so reset timer to wait a full interval before spawning the next
+    const lastPipe = this.pipes[this.pipes.length - 1];
+    const distFromRight = lastPipe ? this.width - lastPipe.x : this.PIPE_INTERVAL;
+    this.pipeTimer = distFromRight;
     this.jump();
   }
 
@@ -169,8 +173,12 @@ class Game {
     // Generate pipes
     this.pipeTimer += speed;
     if (this.pipeTimer >= this.PIPE_INTERVAL) {
-      this.pipeTimer = 0;
-      this.spawnPipe();
+      // Only spawn if the last pipe is far enough away
+      const lastPipe = this.pipes[this.pipes.length - 1];
+      if (!lastPipe || lastPipe.x < this.width - this.PIPE_WIDTH * 2) {
+        this.pipeTimer = 0;
+        this.spawnPipe();
+      }
     }
 
     // Update pipes
