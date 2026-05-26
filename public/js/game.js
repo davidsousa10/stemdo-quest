@@ -62,11 +62,12 @@ class Game {
     this.groundY = this.height - this.GROUND_HEIGHT;
     this.PIPE_GAP = Math.max(280, Math.min(380, this.height * 0.45));
 
-    // Scale player and pipes to screen size
-    const scale = Math.min(this.width / 1200, this.height / 900);
-    this.player.width = 200 * scale;
-    this.player.height = 170 * scale;
-    this.PIPE_WIDTH = 120 * scale;
+    // Scale player and pipes: half size on mobile
+    const isMobile = this.width < 600;
+    const mobileScale = isMobile ? 0.5 : 1;
+    this.player.width = 200 * mobileScale;
+    this.player.height = 170 * mobileScale;
+    this.PIPE_WIDTH = 120 * mobileScale;
 
     if (!this.started) {
       this.player.x = this.width * 0.2;
