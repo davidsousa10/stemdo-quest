@@ -61,11 +61,8 @@ class Game {
     this.groundY = this.height - this.GROUND_HEIGHT;
     this.PIPE_GAP = Math.max(280, Math.min(380, this.height * 0.45));
 
-    // Scale player and pipes based on canvas size
-    // On mobile, canvas uses devicePixelRatio so this.width is much larger
-    const cssWidth = this.width / (window.devicePixelRatio || 1);
-    const baseSize = Math.min(cssWidth, this.height / (window.devicePixelRatio || 1));
-    const scale = Math.min(baseSize / 700, 1);
+    // Scale player and pipes: this.width is CSS pixels (375 on iPhone)
+    const scale = Math.min(this.width / 700, 1);
     this.player.width = 200 * scale;
     this.player.height = 170 * scale;
     this.PIPE_WIDTH = 120 * scale;
