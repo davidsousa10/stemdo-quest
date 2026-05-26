@@ -13,7 +13,6 @@ class Game {
     // Game constants
     this.GRAVITY = 0.7;
     this.JUMP_FORCE = -12;
-    this.PIPE_WIDTH = 120;
     this.PIPE_GAP = 300;
     this.PIPE_SPEED = 3;
     this.PIPE_INTERVAL = 500;
@@ -22,7 +21,7 @@ class Game {
     // Player
     this.player = {
       x: 0, y: 0,
-      width: 200, height: 170,
+      width: 0, height: 0,
       vy: 0, vx: 0,
       angle: 0,
       state: 'alive', // 'alive' | 'crashed' | 'bouncing' | 'split'
@@ -63,8 +62,8 @@ class Game {
     this.PIPE_GAP = Math.max(280, Math.min(380, this.height * 0.45));
 
     // Scale player and pipes: half size on mobile
-    const isMobile = this.width < 600;
-    const mobileScale = isMobile ? 0.5 : 1;
+    const screenWidth = window.innerWidth;
+    const mobileScale = screenWidth < 600 ? 0.5 : 1;
     this.player.width = 200 * mobileScale;
     this.player.height = 170 * mobileScale;
     this.PIPE_WIDTH = 120 * mobileScale;
