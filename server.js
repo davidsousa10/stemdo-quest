@@ -3,7 +3,6 @@ const cors = require('cors');
 const path = require('path');
 const { Parser } = require('json2csv');
 const { getDb, initDb } = require('./database');
-const sheets = require('./sheets');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,8 +10,6 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
-
-sheets.init(app);
 
 // Register player
 app.post('/api/register', async (req, res) => {
@@ -76,8 +73,6 @@ app.post('/api/score', async (req, res) => {
     const newAttempts = player.attempts_used + 1;
 
     await sql`UPDATE players SET best_score = ${newBest}, attempts_used = ${newAttempts} WHERE id = ${player_id}`;
-
-    sheets.addScore(player.name, player.email, score);
 
     res.json({
       score,
