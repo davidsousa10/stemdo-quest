@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Stemdo Quest</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Registration Screen -->
+  <div id="screen-register" class="screen active">
+    <div class="register-container">
+      <h1 class="title">STEMDO QUEST</h1>
+      <p class="subtitle">Esquiva las tuberias!</p>
+      <form id="register-form">
+        <div class="input-group">
+          <label for="player-name">NOMBRE:</label>
+          <input type="text" id="player-name" placeholder="Tu nombre" required autocomplete="name">
+        </div>
+        <div class="input-group">
+          <label for="player-email">EMAIL:</label>
+          <input type="email" id="player-email" placeholder="tu@email.com" required autocomplete="email">
+        </div>
+        <button type="submit" class="btn-play">JUGAR!</button>
+      </form>
+      <p id="register-error" class="error-msg"></p>
+      <p id="register-returning" class="returning-msg"></p>
+    </div>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="screen-game" class="screen">
+    <div id="game-hud">
+      <span id="hud-attempts">INTENTO 1/3</span>
+      <span id="hud-score">0</span>
+      <span id="hud-best">BEST: 0</span>
+    </div>
+    <canvas id="game-canvas"></canvas>
+    <div id="start-overlay">
+      <p>PULSA PARA EMPEZAR</p>
+      <p class="hint">ESPACIO / CLICK / TAP</p>
+    </div>
+  </div>
+
+  <!-- Game Over Screen -->
+  <div id="screen-gameover" class="screen">
+    <div class="gameover-container">
+      <h2 class="title">GAME OVER</h2>
+      <div class="score-display">
+        <p>PUNTOS: <span id="go-score" class="highlight">0</span></p>
+        <p>MEJOR: <span id="go-best" class="highlight">0</span></p>
+      </div>
+      <p id="go-attempts" class="attempts-info"></p>
+      <div class="gameover-buttons">
+        <button id="btn-retry" class="btn-play">REINTENTAR</button>
+        <button id="btn-ranking" class="btn-secondary">VER RANKING</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ranking Screen -->
+  <div id="screen-ranking" class="screen">
+    <div class="ranking-container">
+      <h2 class="title">TOP 10</h2>
+      <div id="ranking-list"></div>
+      <div class="ranking-buttons">
+        <button id="btn-back-play" class="btn-play">JUGAR</button>
+        <button id="btn-back-register" class="btn-secondary">NUEVO JUGADOR</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/sprites.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
